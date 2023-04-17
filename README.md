@@ -49,3 +49,16 @@ To run the tests located in test_scraping.py, follow these steps:
 python -m unittest test_scraping.py
 ```
 This will run all the tests located in the test_scraping.py file.
+
+## Potential improvements
+
+* Increase test coverage. Use mock objects to test the scraper rather than the live site
+* Discuss trade-offs between using Selenium (to handle dynamic JS content) vs BeautifulSoup.
+* Add more error handling
+* Use logging instead of printing
+* Caching the response object from requests / caching the parsed HTML (+ performance).
+* Integrate with a CI/CD pipeline (e.g github actions)
+* Add a Dockerfile to containerize the application
+* Add a Makefile to simplify the build process
+* Extend find_external_resources: Refactor the find_external_resources method to handle more than just the src and href attributes, and consider storing metadata about the resources.
+* Generalize get_visible_text: Refactor the get_visible_text method to be more generic, rather than hardcoded for the specific website.
