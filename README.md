@@ -56,7 +56,7 @@ This will run all the tests located in the test_scraping.py file.
 * Discuss trade-offs between using Selenium (to handle dynamic JS content) vs BeautifulSoup.
 * Add more error handling
 * Use logging instead of printing
-* Caching the response object from requests / caching the parsed HTML (+ performance).
+* Caching the parsed HTML to improve performance.
 * Integrate with a CI/CD pipeline (e.g github actions)
 * Add a Dockerfile to containerize the application
 * Add a Makefile to simplify the build process

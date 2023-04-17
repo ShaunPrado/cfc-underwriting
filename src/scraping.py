@@ -1,4 +1,5 @@
 import requests
+import requests_cache
 import json
 import re
 from bs4 import BeautifulSoup
@@ -7,15 +8,24 @@ from urllib.parse import urljoin
 class Scraper:
     """A scraper class to scrape and analyze a website's privacy policy and external resources."""
 
+    session = None
+
     def __init__(self, base_url):
         """Initialize the scraper with the base URL of the website."""
         self.base_url = base_url
-
+        if not Scraper.session:
+            Scraper.session = requests_cache.CachedSession('base_url_cache', expire_after=3600)
+    
     def get_soup_from_url(self, url):
         """Retrieve the HTML content of the given URL and return a BeautifulSoup object."""
-        response = requests.get(url)
-        soup = BeautifulSoup(response.text, "html.parser")
-        return soup
+        try:
+            response = Scraper.session.get(url)
+            response.raise_for_status()
+            soup = BeautifulSoup(response.text, "html.parser")
+            return soup
+        except (requests.exceptions.RequestException, ValueError) as e:
+            print("Error retrieving URL: ", url)
+            return None
 
     def find_external_resources(self, soup):
         """Find and return a list of external resources (only src, href) found in the given BeautifulSoup object. TODO: Extend for other tags e.g img, script, etc."""
