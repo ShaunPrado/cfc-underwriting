@@ -38,9 +38,29 @@ cd src
 python3 scraper.py
 ```
 3. The results will be saved in the src folder as word_frequency.json and external_resources.json.
+external_resources.json contains an array, where each entry represents an external resource found on the website.
 
-* external_resources.json: Contains a list of external resources found on the target website.
-* word_frequency.json: Contains the word frequency count from the privacy policy page.
+Here is an example of what the word_frequency.json file might look like:
+
+```json
+[
+    "https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700",
+    "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css",
+    "https://www.googletagmanager.com/ns.html?id=GTM-NGGN5FB"
+]
+```
+
+word_frequency.json contains a dictionary of word frequencies found in the privacy policy page. The keys of the dictionary are the individual words, and the values are the frequency of occurrence of each word in the page.
+
+Here is an example of what the word_frequency.json file might look like:
+
+```json
+{
+    "our": 54,
+    "approach": 1,
+    "this": 9
+}
+```
 
 ## Running tests
 To run the tests located in test_scraping.py, follow these steps:
