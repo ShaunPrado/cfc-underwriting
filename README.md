@@ -35,7 +35,7 @@ cd cfc-underwriting
 2. Run the script:
 ```
 cd src
-python scraper.py
+python3 scraper.py
 ```
 3. The results will be saved in the src folder as word_frequency.json and external_resources.json.
 
@@ -46,7 +46,7 @@ python scraper.py
 To run the tests located in test_scraping.py, follow these steps:
 
 ```
-python -m unittest test_scraping.py
+python3 -m unittest test_scraping.py
 ```
 This will run all the tests located in the test_scraping.py file.
 
